@@ -12,6 +12,7 @@ public class ConstructorInjectedController {
     private final GreetingService greetingService;
 
     // @Autowired Optional in Spring 4.2 or later
+    // If remove @Qualifier will get error unless "Primary Bean" has been set.
     public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
