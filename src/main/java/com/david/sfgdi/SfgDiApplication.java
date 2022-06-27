@@ -12,14 +12,6 @@ public class SfgDiApplication {
 
         ApplicationContext ctx =  SpringApplication.run(SfgDiApplication.class, args);
 
-        System.out.println("----- Spring Profile");
-        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
-        System.out.println(i18nController.sayHello());
-
-        System.out.println("----- Primary Bean");
-        MyController myController = (MyController) ctx.getBean("myController");
-        System.out.println(myController.syHello());
-
         System.out.println("----- Property with Spring");
         PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
         System.out.println(propertyInjectedController.getGreeting());
@@ -31,6 +23,14 @@ public class SfgDiApplication {
         System.out.println("----- Constructor with Spring");
         ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
         System.out.println(constructorInjectedController.getGreeting());
+
+        System.out.println("----- Spring Profile");
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
+
+        System.out.println("----- Primary Bean");
+        MyController myController = (MyController) ctx.getBean("myController");
+        System.out.println(myController.syHello());
 
     }
 
