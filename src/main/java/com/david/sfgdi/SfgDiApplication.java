@@ -32,6 +32,10 @@ public class SfgDiApplication {
         MyController myController = (MyController) ctx.getBean("myController");
         System.out.println(myController.syHello());
 
+        System.out.println("---- Pet Factory");
+        PetController petController = ctx.getBean("petController", PetController.class);
+        System.out.println(petController.getType());
+
     }
 
 }
