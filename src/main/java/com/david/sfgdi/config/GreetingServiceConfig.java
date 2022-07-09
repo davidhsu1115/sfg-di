@@ -9,17 +9,19 @@ import com.spring.pets.DogPetService;
 import com.spring.pets.PetService;
 import com.spring.pets.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakedataSource fakedataSource(SfgConfiguration sfgConfiguration){
+    FakedataSource fakedataSource(SfgConstructorConfig sfgConstructorConfig){
         FakedataSource fakedataSource = new FakedataSource();
-        fakedataSource.setUsername(sfgConfiguration.getUsername());
-        fakedataSource.setPassword(sfgConfiguration.getPassword());
-        fakedataSource.setDbUrl(sfgConfiguration.getDbUrl());
+        fakedataSource.setUsername(sfgConstructorConfig.getUsername());
+        fakedataSource.setPassword(sfgConstructorConfig.getPassword());
+        fakedataSource.setDbUrl(sfgConstructorConfig.getDbUrl());
         return fakedataSource;
     }
 
