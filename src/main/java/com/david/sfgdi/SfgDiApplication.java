@@ -1,6 +1,7 @@
 package com.david.sfgdi;
 
 import com.david.sfgdi.controllers.*;
+import com.david.sfgdi.datasource.FakedataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +36,12 @@ public class SfgDiApplication {
         System.out.println("---- Pet Factory");
         PetController petController = ctx.getBean("petController", PetController.class);
         System.out.println(petController.getType());
+
+        System.out.println("--- External source: .properties");
+        FakedataSource fakedataSource = ctx.getBean(FakedataSource.class);
+        System.out.println(fakedataSource.getUsername());
+        System.out.println(fakedataSource.getPassword());
+        System.out.println(fakedataSource.getDbUrl());
 
     }
 

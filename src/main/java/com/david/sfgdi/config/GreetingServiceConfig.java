@@ -1,5 +1,6 @@
 package com.david.sfgdi.config;
 
+import com.david.sfgdi.datasource.FakedataSource;
 import com.david.sfgdi.repositories.EnglishGreetingRepository;
 import com.david.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.david.sfgdi.services.*;
@@ -7,13 +8,20 @@ import com.spring.pets.CatPetService;
 import com.spring.pets.DogPetService;
 import com.spring.pets.PetService;
 import com.spring.pets.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakedataSource fakedataSource(SfgConfiguration sfgConfiguration){
+        FakedataSource fakedataSource = new FakedataSource();
+        fakedataSource.setUsername(sfgConfiguration.getUsername());
+        fakedataSource.setPassword(sfgConfiguration.getPassword());
+        fakedataSource.setDbUrl(sfgConfiguration.getDbUrl());
+        return fakedataSource;
+    }
 
     // -- Factory
     @Bean
